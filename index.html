@@ -951,16 +951,16 @@
 
             <div class="rules-grid">
                 <div class="rule-item">
-                    <div class="rule-title" style="color: #818cf8;">⚔️ 1. Karşılıklı Düello</div>
+                    <div class="rule-title" style="color: #818cf8;">⚔️ 1. Karşılıklı Düello (%90)</div>
                     <p class="rule-text">Buldukça sıra aynı kelimeyle karşıya geçer. Başlayan takım bulamazsa karşıya <strong>1 Son Şans</strong> verilir. Fazla bulan +1 puan alır.</p>
                 </div>
                 <div class="rule-item">
-                    <div class="rule-title" style="color: #34d399;">🎁 2. Kategori Bonusu</div>
-                    <p class="rule-text">Rastgele <em>"Bir Hayvan", "Bir Meyve", "Bir Şehir"</em> gibi kategoriler gelir. İstenilen örnekle karşılıklı şarkı bulunur.</p>
+                    <div class="rule-title" style="color: #34d399;">🎁 2. Kategori Bonusu (%5)</div>
+                    <p class="rule-text">Nadir ve sürpriz olarak <em>"Bir Hayvan", "Bir Meyve", "Bir Şehir"</em> gibi kategoriler gelir. İstenilen örnekle karşılıklı şarkı bulunur.</p>
                 </div>
                 <div class="rule-item">
-                    <div class="rule-title" style="color: #fbbf24;">🔥 3. Zor Bonus Round</div>
-                    <p class="rule-text">Rastgele zor bir kelime gelir! Sıradaki takım 60 saniyede şarkı bulursa <strong>sıra karşıya geçmeden anında +1 Puan</strong> alır!</p>
+                    <div class="rule-title" style="color: #fbbf24;">🔥 3. Zor Bonus Round (%5)</div>
+                    <p class="rule-text">Nadir olarak zor bir kelime gelir! Sıradaki takım 60 saniyede şarkı bulursa <strong>sıra karşıya geçmeden anında +1 Puan</strong> alır!</p>
                 </div>
             </div>
 
@@ -1206,7 +1206,18 @@
             "Yersiz","Nedensiz","Sebepsiz","Karşılıksız","Bedelsiz","Alışmak","Unutmak","Sevmek","Ayrılmak","Kavuşmak",
             "Özlemek","Beklemek","Ağlamak","Gülmek","Yaşamak","Ölmek","Doğmak","Büyümek","Yaşlanmak","Düşmek",
             "Kalkmak","Koşmak","Uçmak","Yüzmek","Batmak","Çıkmak","İnmek","Girmek","Geçmek","Kalmak",
-            "Durmak","Başlamak","Bitmek","Tükenmek","Sönmek","Parlamak","Solmak","Açmak","Kapanmak","Kırılmak"
+            "Durmak","Başlamak","Bitmek","Tükenmek","Sönmek","Parlamak","Solmak","Açmak","Kapanmak","Kırılmak",
+            "Dökülmek","Saçılmak","Savrulmak","Yorulmak","Kırgın","Üzgün","Vurgun","Tutkun","Sürgün","Yorgunluk",
+            "Sensizlik","Sessizlik","Çaresizlik","Kimsesizlik","Umutsuzluk","Mutsuzluk","Yalnızım","Bıktım","Usandım","Yandım",
+            "Söndüm","Bittim","Gittim","Kaldım","Döndüm","Sevdim","Öldüm","Güldüm","Ağladım","Anladım",
+            "Dinledim","Bekledim","Özledim","Sakladım","Unuttum","Alıştım","Vazgeçtim","Kaybettim","Kazandım","Aldandım",
+            "İnandım","Güvendim","Korktum","Kaçtım","Uçtum","Koştum","Düştüm","Kalktım","Baktım","Gördüm",
+            "Duydum","Bildim","Sordum","Buldum","Verdim","Aldım","Çaldım","Kırdım","Yıktım","Yaktım",
+            "Sardım","Öptüm","Kokladım","Dokundum","Tutuldum","Vuruldum","Yoruldum","Kırıldım","Darıldım","Sarıldım",
+            "Ayrıldım","Kavuşmak","Buluşmak","Konuşmak","Susmak","Bağırmak","Çağırmak","Fısıldamak","Titremek","Üşütmek",
+            "Terlemek","Kanamak","Acımak","Sızlamak","Ağrımak","İyileşmek","Delirmek","Çıldırmak","Şaşırmak","Yanılmak",
+            "Aldanmak","Kandırılmak","Terkedilmek","Unutulmak","Hatırlanmak","Sevilmek","Üzülmek","Sevinmek","Övünmek","Dövünmek",
+            "Yalvarmak","Yakarmak","Dilemek","İstemek","Aramak","Taramak","Sorgulamak","Yargılamak","Suçlamak","Affetmek"
         ];
 
         // 2. SERBEST KATEGORİ BONUS KARTLARI (35 Kategori)
@@ -1432,14 +1443,14 @@
             gameState.currentTeamIndex = gameState.roundStarterIndex;
 
             // 1. Tur ısınma için normal kelime, sonraki tüm turlar %100 rastgele:
-            // %18 Zor Kelime Bonus Round, %22 Serbest Kategori Bonusu, %60 Standart Kelime
+            // %5 Zor Kelime Bonus Round, %5 Serbest Kategori Bonusu, %90 Standart Kelime Düellosu
             if (gameState.roundCount === 1) {
                 gameState.roundType = 'normal';
             } else {
                 const rand = Math.random();
-                if (rand < 0.18) {
+                if (rand < 0.05) {
                     gameState.roundType = 'bonus_hard';
-                } else if (rand < 0.40) {
+                } else if (rand < 0.10) {
                     gameState.roundType = 'category';
                 } else {
                     gameState.roundType = 'normal';
